@@ -39,6 +39,7 @@ function gotImage(e) {
   const file = files[0];
   const imageType = /image.*/;
   if (file.type.match(imageType)) {
+    intruction.innerHTML = 'Drag and drop a new image above.'
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
