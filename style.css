@@ -6,6 +6,7 @@ html, body {
 #image {
   max-height: 300px;
   min-height: 300px;
+  max-width: 600px;
 }
 
 #container {
