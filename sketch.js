@@ -9,6 +9,7 @@ Simple Image Classification Drag and Drop
 === */
 
 const image = document.getElementById('image'); // The image we want to classify
+const intruction = document.getElementById('instruction');
 
 function preventDefaults(e) {
   e.preventDefault()
@@ -36,11 +37,17 @@ function gotImage(e) {
     console.error('upload only one file');
   }
   const file = files[0];
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onloadend = () => {
-    image.src = reader.result;
-    setTimeout(classifyImage, 100);
+  const imageType = /image.*/;
+  if (file.type.match(imageType)) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      image.src = reader.result;
+      setTimeout(classifyImage, 100);
+    }
+  } else {
+    image.src = 'images/kitten.jpg';
+    intruction.innerHTML = 'Drag and drop a new image above. Please drop an image file.'
   }
 }
 
